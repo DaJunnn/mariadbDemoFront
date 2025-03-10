@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <el-table :data="reservations" border class="table">
+    <el-table :data="reservations" border class="table" style="width: 100%;">
       <el-table-column prop="reservation_id" label="預約編號" />
       <el-table-column prop="student_id" label="學生編號" />
       <el-table-column prop="seat_id" label="座位編號" />
@@ -15,13 +15,19 @@ import { onMounted, ref } from 'vue';
 import type { Reservation } from './interfaces/Reservations';
 import { asyncGet } from './utils/fetch';
 import { apis } from './enum/api';
-const reservations = ref<Array<Reservation>>([])
+
+const reservations = ref<Array<Reservation>>([]);
 
 onMounted(() => {
-  asyncGet(apis.test).then((resp: Array<Reservation>) => {
-    reservations.value = resp
-  })
-})
+  asyncGet(apis.test)
+    .then((resp: Array<Reservation>) => {
+      console.log('✅ 回傳資料:', resp);
+      reservations.value = resp;
+    })
+    .catch(err => {
+      console.error('❌ API 錯誤:', err);
+    });
+});
 </script>
 
 <style scoped lang="scss">
@@ -34,7 +40,7 @@ onMounted(() => {
 
   .table {
     width: 80%;
-    height: 60%;
+    height: auto;
   }
 }
 </style>
