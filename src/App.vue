@@ -21,11 +21,11 @@ const reservations = ref<Array<Reservation>>([]);
 onMounted(() => {
   asyncGet(apis.test)
     .then((resp: Array<Reservation>) => {
-      console.log('✅ 回傳資料:', resp);
+      console.log('回傳資料:', resp);
       reservations.value = resp;
     })
     .catch(err => {
-      console.error('❌ API 錯誤:', err);
+      console.error('API 錯誤:', err);
     });
 });
 </script>
