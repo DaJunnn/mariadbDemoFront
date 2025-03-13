@@ -6,9 +6,14 @@
 - Vite
 - Element Plus
 - Axios (封裝於 utils/fetch.ts)
-### 安裝依賴
+### 安裝依賴、啟動專案、打包專案
 ```bash
 npm install
-#### 啟動專案
+
 ```bash
 npm run dev
+
+```bash
+npm run build
+
+
